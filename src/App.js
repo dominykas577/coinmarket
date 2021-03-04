@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Coin from './Components/Coin/coin';
 import logo from './logo.svg';
+import AccountBalance from './Components/AccountBalance/AccountBalance.jsx'
 
 
 
@@ -17,6 +18,7 @@ function App() {
          Coin Marketcap
         </h1>
          </header>
+         <AccountBalance amount={10000} />
          <table className="cointable">
       <thead className="thead-row">
         <tr>
@@ -26,18 +28,23 @@ function App() {
         </tr>
       </thead> 
       <tbody>
+
+       
         
         <Coin name="Bitcoin" ticker="BTC" price = {800}/>
         <Coin name="Ethereum" ticker="ETH" price= {200}/>
         <Coin name="Tether" ticker="USDT" price= {1}/>
         <Coin name="Ripple" ticker="XRP" price= {0.5}/>
-
+      
+       
 
       
         <Coin name="Binance Coin" ticker="BNB" price = {800}/>
         <Coin name="Ethereum" ticker="ETH" price= {200}/>
         <Coin name="Tether" ticker="USDT" price= {1}/>
         <Coin name="Ripple" ticker="XRP" price= {0.5}/>
+
+      
       </tbody>
     </table>
     </div>

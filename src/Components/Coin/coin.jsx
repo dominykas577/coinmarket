@@ -1,6 +1,29 @@
 import React, { Component } from 'react';
-import './coin.css';
 import PropTypes from 'prop-types';
+import styled from 'styled-components'
+
+
+
+/*class MyComponent extends React.Component {
+    render() {
+      // Attach the passed-in className to the DOM node
+      return <div className={this.props.className} />
+    }
+  }
+*/
+
+
+
+//const "coin-row" = styled.coin-row`
+
+const Td = styled.td`
+  border: 2px solid #cccccc;
+  width: 30vh;
+`;
+
+
+
+
 
 export default class Coin extends Component {
 
@@ -44,16 +67,16 @@ handleClick(event) {
         return (
             
      
-        <tr className="coin-row">
-            <td>{this.props.name}</td>
-            <td>{this.props.ticker}</td>
-            <td>${this.state.price}</td>
-            <td>
+        <tr>
+            <Td>{this.props.name}</Td>
+            <Td>{this.props.ticker}</Td>
+            <Td>${this.state.price}</Td>
+            <Td>
                 <form action="#" method="POST">
                     <button onClick={this.handleClick}>Refresh</button>
                 </form>
                  
-           </td>
+           </Td>
         </tr>       
         );
     }

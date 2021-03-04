@@ -13,16 +13,12 @@
 
 }
 
-.coin-row td {
-  border: 2px solid #071402;
-  width: 100vh;
-}
-
 
 
 .App-logo {
   height: 10vmin;
   pointer-events: none;
+  
 }
 
 
