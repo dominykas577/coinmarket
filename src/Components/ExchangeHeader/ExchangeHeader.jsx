@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './ExchangeHeader.css';
 import logo from './logo.svg';
 import styled from 'styled-components';
-import logo1 from './cannabis.svg';
+import logo1 from './piggy.svg';
 
 
 
@@ -63,7 +63,7 @@ export default class ExchangeHeader extends Component {
              Coin Marketcap
             </H1>
             
-            <Img src={logo1} alt="Cannabis logo"/>
+            <Img src={logo1} alt="Piggy logo"/>
             
             </Header>
         )
