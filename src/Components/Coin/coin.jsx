@@ -70,7 +70,7 @@ handleClick(event) {
         <tr>
             <Td>{this.props.name}</Td>
             <Td>{this.props.ticker}</Td>
-            <Td>${this.state.price}</Td>
+            <Td>${this.props.price}</Td>
             <Td>
                 <form action="#" method="POST">
                     <button onClick={this.handleClick}>Refresh</button>
