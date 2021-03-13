@@ -29,10 +29,8 @@ export default class Coin extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            price: this.props.price 
-        }
         this.handleClick = this.handleClick.bind(this);
+     
 
     }
 /*
@@ -47,11 +45,13 @@ export default class Coin extends Component {
     }
     setInterval( callback, 1000 );
 }
-*/
 
+*/
 handleClick(event) {
     // Prevent the default action of submitting the form
     event.preventDefault();
+    this.props.handleRefresh(this.props.ticker);
+   /* this.props.handleRefresh(this.props.ticker);
 
     const randomPercentage = 0.995 + Math.random() * 0.01;
             this.setState( function(oldState) {
@@ -59,11 +59,12 @@ handleClick(event) {
                   price: oldState.price * randomPercentage
                 };
         });
+*/
+
+} 
 
 
-}
-
-    render() {
+    render(){
         return (
             
      
