@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components'
 
@@ -25,68 +25,84 @@ const Td = styled.td`
 
 
 
-export default class Coin extends Component {
+export default function Coin(props) {
 
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-     
+    const handleClick = (event) => {
+        // Prevent the default action of submitting the form
+        event.preventDefault();
+        props.handleRefresh(props.tickerId);
+        } 
+        
+        const balance = props.showBalance ?
+            <Td>{props.balance}</Td> : <Td>-</Td>;
 
-    }
-/*
-    componentDidMount(){
-        const callback =()=>{
-            const randomPercentage = 0.995 + Math.random() * 0.01;
-            this.setState( function(oldState) {
-                return{
-                  price: oldState.price * randomPercentage
-                };
-        });
-    }
-    setInterval( callback, 1000 );
-}
-
-*/
-handleClick(event) {
-    // Prevent the default action of submitting the form
-    event.preventDefault();
-    this.props.handleRefresh(this.props.ticker);
-   /* this.props.handleRefresh(this.props.ticker);
-
-    const randomPercentage = 0.995 + Math.random() * 0.01;
-            this.setState( function(oldState) {
-                return{
-                  price: oldState.price * randomPercentage
-                };
-        });
-*/
-
-} 
-
-
-    render(){
         return (
             
      
         <tr>
-            <Td>{this.props.name}</Td>
-            <Td>{this.props.ticker}</Td>
-            <Td>${this.props.price}</Td>
+            <Td>{props.name}</Td>
+            <Td>{props.ticker}</Td>
+            <Td>${props.price}</Td>
+            {balance}
+            
+
             <Td>
                 <form action="#" method="POST">
-                    <button onClick={this.handleClick}>Refresh</button>
+                    <button onClick={handleClick}>Refresh</button>
                 </form>
                  
            </Td>
         </tr>       
-        );
-    }
+        ); 
+    
 }
 
+
+
+
+/*class component 
+export default Coin extends Component {
+
+  handleClick = (event) => {
+      // Prevent the default action of submitting the form
+      event.preventDefault();
+      this.props.handleRefresh(this.props.tickerId);
+ 
+
+} 
+
+
+  render(){
+
+      const balance = this.props.showBalance ?
+          <Td>{this.props.balance}</Td> : <Td>-</Td>;
+
+      return (
+          
+   
+      <tr>
+          <Td>{this.props.name}</Td>
+          <Td>{this.props.ticker}</Td>
+          <Td>${this.props.price}</Td>
+          {balance}
+          
+
+          <Td>
+              <form action="#" method="POST">
+                  <button onClick={this.handleClick}>Refresh</button>
+              </form>
+               
+         </Td>
+      </tr>       
+      ); 
+  }
+}
+*/
 Coin.propTypes = {
     name: PropTypes.string.isRequired,
     ticker: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired
+    price: PropTypes.number.isRequired,
+    balance: PropTypes.number.isRequired
 }
 
 
