@@ -13,35 +13,63 @@ const Section = styled.section`
 
 `;
 
+const Balance = styled.div`
+    min-width: 250px;
+    margin: 0.5rem 0 0 2.5rem;
+    font-size: 1.5em
+    vertical-align: middle;
+    text-align: middle;
+`;
 
+const Button = styled.button`
+    margin: 0 8px;
+`;
+
+const BalanceToggleButton = styled(Button)`
+    width: 150px;
+`;
+
+var formatter = Intl.NumberFormat('en-US', {
+    style:  'currency',
+    currency: 'USD'
+});
 
 
 
 export default function AccountBalance (props) {
 
    
-        const buttonText = props.showBalance ?  //whether we need to show the balance or not
-            'Hide Balance' : 'Show Balance';
-
-        let balance = props.showBalance ?
-            <>Balance: ${props.amount}</>
-            : null;
+        const buttonText = props.showBalance ? <> { formatter.format(props.amount) }</> : 'Show Balance';
+        let content = '\u00A0';  //so that the page does not jump around
+        const buttonClass = 'btn ' + (props.showBalance ?  'btn-warning' : 'btn-info' );
         
-        //Or, but you need to change some variables
-        /*
-        let content = null;
+        if (props.showBalance) {
+           content = <>{ formatter.format(props.amount) }</>;
+        } 
+        
 
-        if( this.props.showBalance ){
-            content = <>Balance: ${this.props.amount}</>
+       /* 
+       if (props.showBalance) {
+            content = <> Balance: {props.amount} </>
         }
+        
         */
-      
-
+  
         return (
-            <Section>
-                {balance}
-                <button onClick={props.handleToggleShowBalance}> {buttonText}</button>
+            <>
+            <Balance>{content}</Balance>
+            <Section> 
+                <BalanceToggleButton 
+                    onClick={props.handleToggleShowBalance}
+                    className={buttonClass}>  
+                    {buttonText}
+                </BalanceToggleButton>
+                <Button className = "btn btn-success"
+                    onClick = {props.handleBrr}>
+                    <i className="fas fa-helicopter" color='blue' ></i>
+                </Button>
             </Section>
+            </>
         );
     
 }

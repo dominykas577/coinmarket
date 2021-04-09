@@ -4,22 +4,28 @@ import styled from 'styled-components'
 
 
 
-/*class MyComponent extends React.Component {
-    render() {
-      // Attach the passed-in className to the DOM node
-      return <div className={this.props.className} />
-    }
-  }
-*/
-
-
-
-//const "coin-row" = styled.coin-row`
-
 const Td = styled.td`
   border: 2px solid #cccccc;
   width: 30vh;
 `;
+
+const TdControls = styled(Td)`
+  width: 32vw;
+`;
+
+const TdName = styled(Td)`
+  width: 20vw;
+
+`;
+
+
+const Button = styled.button`
+  font-size: 11px;
+  width: 64px;
+  margin: 3px 5px 0;
+`;
+
+
 
 
 
@@ -27,12 +33,26 @@ const Td = styled.td`
 
 export default function Coin(props) {
 
-    const handleClick = (event) => {
+    const handleRefresh = (event) => {
         // Prevent the default action of submitting the form
         event.preventDefault();
         props.handleRefresh(props.tickerId);
         } 
         
+    const handleBuy = (event) => {
+                // Prevent the default action of submitting the form
+        event.preventDefault();
+        props.handleTransaction(true, props.tickerId);
+        } 
+
+    const handleSell = (event) => {
+            // Prevent the default action of submitting the form
+        event.preventDefault();
+        props.handleTransaction(false, props.tickerId);
+        } 
+
+
+
         const balance = props.showBalance ?
             <Td>{props.balance}</Td> : <Td>-</Td>;
 
@@ -40,18 +60,26 @@ export default function Coin(props) {
             
      
         <tr>
-            <Td>{props.name}</Td>
+            <TdName>{props.name}</TdName>
             <Td>{props.ticker}</Td>
             <Td>${props.price}</Td>
             {balance}
             
 
-            <Td>
+            <TdControls>
                 <form action="#" method="POST">
-                    <button onClick={handleClick}>Refresh</button>
+                    <Button className="btn btn-info" onClick={handleRefresh}>
+                    Refresh
+                    </Button>
+                    <Button className="btn btn-warning" onClick={handleBuy}>
+                    Buy
+                    </Button>
+                    <Button className="btn btn-danger" onClick={handleSell}>
+                    Sell
+                    </Button>
                 </form>
                  
-           </Td>
+           </TdControls>
         </tr>       
         ); 
     

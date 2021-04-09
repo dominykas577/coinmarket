@@ -1,10 +1,15 @@
 import React from 'react';
-import Coin from '../Coin/coin.jsx'
+import Coin from '../Coin/coin.jsx';
+import styled from 'styled-components';
+
+const Table = styled.table`
+  font-size: 1rem;
+`;
 
 export default function CoinList (props) {
     
         return (
-            <table className="cointable">
+            <Table className="table table-primary table-bordered">
             <thead className="thead-row">
               <tr>
                 <th>Name</th>
@@ -19,6 +24,7 @@ export default function CoinList (props) {
                 props.coinData.map( ({key, name,ticker,price, balance}) =>
                   <Coin key={key} 
                         handleRefresh={props.handleRefresh}
+                        handleTransaction={props.handleTransaction}
                         name={name} 
                         ticker={ticker} 
                         balance={balance}
@@ -31,7 +37,7 @@ export default function CoinList (props) {
               }
               
             </tbody>
-          </table>
+          </Table>
         )
     
 }

@@ -23,7 +23,7 @@ const Header = styled.header`
 
 const H1 = styled.h1`
 
-    font-size: 2rem;
+    font-size: 5rem;
 
 
 
@@ -60,7 +60,7 @@ export default class ExchangeHeader extends Component {
       
             
             <H1>
-             Coin Marketcap
+             Coin Exchange
             </H1>
             
             <Img src={logo1} alt="Piggy logo"/>
